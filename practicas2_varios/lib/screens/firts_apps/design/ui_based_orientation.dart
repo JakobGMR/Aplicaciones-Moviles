@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/helpers/drawer_global.dart';
+import 'package:practicas2_varios/widgets/drawer_global.dart';
 
-class SecondScreen extends StatefulWidget {
-  const SecondScreen({super.key});
+class UIBasedOrientationScreen extends StatefulWidget {
+  const UIBasedOrientationScreen({super.key});
 
   @override
-  State<SecondScreen> createState() => _SecondScreenState();
+  State<UIBasedOrientationScreen> createState() => _UIBasedOrientationScreenState();
 }
 
-class _SecondScreenState extends State<SecondScreen> {
+class _UIBasedOrientationScreenState extends State<UIBasedOrientationScreen> {
   int numberItems = 1;
 
   @override

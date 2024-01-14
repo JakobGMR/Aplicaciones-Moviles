@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/helpers/drawer_global.dart';
+import 'package:practicas2_varios/widgets/drawer_global.dart';
 
 class UseListScreen extends StatelessWidget {
   const UseListScreen({super.key});
