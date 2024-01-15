@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practicas2_varios/providers/main_provider.dart';
-import 'package:practicas2_varios/screens/my_home_page_screen.dart';
+import 'package:practicas2_varios/screens/homepage_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent),
           useMaterial3: true,
         ),
-        home: const MyHomePage(),
+        home: const HomePageScreen(),
       ),
     );
   }
