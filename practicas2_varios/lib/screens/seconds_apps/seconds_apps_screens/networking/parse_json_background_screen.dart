@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:practicas2_varios/widgets/drawer_seconds_apps_global.dart';
 
 Future<List<Photo>> fetchPhotos(http.Client client) async {
   final response = await client
@@ -70,10 +71,13 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DrawerSecondsAppsWidget getDrawer = DrawerSecondsAppsWidget();
+    
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
       ),
+      drawer: getDrawer.getDrawer(context),
       body: FutureBuilder<List<Photo>>(
         future: fetchPhotos(http.Client()),
         builder: (context, snapshot) {

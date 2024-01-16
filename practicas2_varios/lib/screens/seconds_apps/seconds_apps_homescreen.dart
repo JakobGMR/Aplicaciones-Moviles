@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:practicas2_varios/providers/main_provider.dart';
 import 'package:practicas2_varios/screens/seconds_apps/seconds_apps_screens/home.dart';
+import 'package:practicas2_varios/screens/seconds_apps/seconds_apps_screens/networking/communicate_websockets_screen.dart';
+import 'package:practicas2_varios/screens/seconds_apps/seconds_apps_screens/networking/delete_data_internet_screen.dart';
+import 'package:practicas2_varios/screens/seconds_apps/seconds_apps_screens/networking/fetch_data_screen.dart';
+import 'package:practicas2_varios/screens/seconds_apps/seconds_apps_screens/networking/make_authenticated_requests_screen.dart';
+import 'package:practicas2_varios/screens/seconds_apps/seconds_apps_screens/networking/send_data_internet_screen.dart';
+import 'package:practicas2_varios/screens/seconds_apps/seconds_apps_screens/networking/update_data_internet_screen.dart';
 import 'package:provider/provider.dart';
 
 class SecondsAppsHomescreen extends StatefulWidget {
@@ -30,7 +36,7 @@ class _SecondsAppsHomescreenState extends State<SecondsAppsHomescreen> {
         break;
 
       case 3:
-        page = const PassArgumentsScreen(title: 'Pass arguments to a named route', message: 'Hola a todos',);
+        page = const ArgumentsNamedRouteScreen();
         break;
 
       case 4:
@@ -49,29 +55,29 @@ class _SecondsAppsHomescreenState extends State<SecondsAppsHomescreen> {
         );
         break;
 
-      // case 6:
-      //   page = const StyleTextFieldScreen();
-      //   break;
+      case 6:
+        page = const FetchDataScreen();
+        break;
 
-      // case 7:
-      //   page = const FocusTextFieldScreen();
-      //   break;
+      case 7:
+        page = const MakeAuthenticatedScreen();
+        break;
 
-      // case 8:
-      //   page = const HandleChangesTextFieldScreen();
-      //   break;
+      case 8:
+        page = const SendDataInternetScreen ();
+        break;
 
-      // case 9:
-      //   page = const ValueTextFieldScreen();
-      //   break;
+      case 9:
+        page = const UpdateDataInternetScreen();
+        break;
 
-      // case 10:
-      //   page = const GridListScreen();
-      //   break;
+      case 10:
+        page = const DeleteDataInternetScreen();
+        break;
 
-      // case 11:
-      //   page = const HorizontalListScreen();
-      //   break;
+      case 11:
+        page = const CommunicateWebsocketsScreen();
+        break;
       
       // case 12:
       //   page = TypesofItemsScreen(items: List<ListItem>.generate(

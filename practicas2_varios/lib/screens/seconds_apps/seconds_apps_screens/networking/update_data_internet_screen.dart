@@ -103,7 +103,8 @@ class _UpdateDataInternetScreenState extends State<UpdateDataInternetScreen> {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text(snapshot.data!.title),
+                      Text('Id: ${snapshot.data!.id} \n'
+                           'Title: ${snapshot.data!.title}'),
                       TextField(
                         controller: _controller,
                         decoration: const InputDecoration(

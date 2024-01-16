@@ -14,6 +14,7 @@ Future<Album> fetchAlbum() async {
       HttpHeaders.authorizationHeader: 'Basic your_api_token_here',
     },
   );
+  
   final responseJson = jsonDecode(response.body) as Map<String, dynamic>;
 
   return Album.fromJson(responseJson);
@@ -69,7 +70,7 @@ class _MakeAuthenticatedScreenState extends State<MakeAuthenticatedScreen> {
     
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Fetch Data Example'),
+        title: const Text('Make Authenticated Request'),
       ),
       drawer: getDrawer.getDrawer(context),
       body: Center(
@@ -77,7 +78,11 @@ class _MakeAuthenticatedScreenState extends State<MakeAuthenticatedScreen> {
           future: futureAlbum,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return Text(snapshot.data!.title);
+              return Text(
+                'Id: ${snapshot.data!.id} \n'
+                'User Id: ${snapshot.data!.userId} \n'
+                'Título: ${snapshot.data!.title}' 
+              );
             } else if (snapshot.hasError) {
               return Text('${snapshot.error}');
             }

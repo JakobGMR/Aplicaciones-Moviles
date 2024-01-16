@@ -11,47 +11,52 @@ class HomePageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var appState = context.watch<MainProvider>();
 
-    return SafeArea(child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        TextButton(
-          style: const ButtonStyle(
-            padding: MaterialStatePropertyAll(EdgeInsets.symmetric(
-              horizontal: 200, vertical: 80
-            )),
-            backgroundColor: MaterialStatePropertyAll(Colors.grey)
+    return SafeArea(child: Container(
+      color: Colors.lightBlue,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextButton(
+            style: const ButtonStyle(
+              padding: MaterialStatePropertyAll(EdgeInsets.symmetric(
+                horizontal: 20, vertical: 40
+              )),
+              backgroundColor: MaterialStatePropertyAll(Colors.grey)
+            ),
+            onPressed: () {
+              appState.selectedIndex = 0; // Para evitar posibles problemas y mandar siempre al primer screen
+              // Cambiar de pantalla
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const FirtsAppsHomescreen()));
+            },
+            child: const Text(
+              'Design, Forms & Lists', 
+              style: TextStyle(fontSize: 30, color: Colors.white),
+            ),
           ),
-          onPressed: () {
-            appState.selectedIndex = 0; // Para evitar posibles problemas y mandar siempre al primer screen
-            // Cambiar de pantalla
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const FirtsAppsHomescreen()));
-          },
-          child: const Text(
-            'Design, Forms & Lists', 
-            style: TextStyle(fontSize: 30,),
-          ),
-        ),
-
-        const SizedBox(height: 50,),
-
-        TextButton(
-          style: const ButtonStyle(
-            padding: MaterialStatePropertyAll(EdgeInsets.symmetric(
-              horizontal: 130, vertical: 80
-            )),
-            backgroundColor: MaterialStatePropertyAll(Colors.grey)
-          ),
-          onPressed: () {
-            appState.selectedIndex = 0; // Para evitar posibles problemas y mandar siempre al primer screen
-            // Cambiar de pantalla
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const SecondsAppsHomescreen()));
-          },
-          child: const Text(
-            'Navigation, Networking & Persistence', 
-            style: TextStyle(fontSize: 26,),
-          ),
-        )
-      ],
+      
+          const SizedBox(height: 30,),
+      
+          TextButton(
+            style: const ButtonStyle(
+              padding: MaterialStatePropertyAll(EdgeInsets.symmetric(
+                vertical: 20, horizontal: 1
+              )),
+              backgroundColor: MaterialStatePropertyAll(Colors.grey)
+            ),
+            onPressed: () {
+              appState.selectedIndex = 0; // Para evitar posibles problemas y mandar siempre al primer screen
+              // Cambiar de pantalla
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const SecondsAppsHomescreen()));
+            },
+      
+            child: const Text(
+              textAlign: TextAlign.center,
+              'Navigation, Networking & Persistence',
+              style: TextStyle(fontSize: 30, color: Colors.white),
+            ),
+          )
+        ],
+      ),
     ));
   }
 }

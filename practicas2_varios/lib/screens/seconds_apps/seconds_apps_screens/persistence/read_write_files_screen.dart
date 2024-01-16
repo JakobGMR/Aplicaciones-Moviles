@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:practicas2_varios/widgets/drawer_seconds_apps_global.dart';
 
 void main() {
   runApp(
@@ -80,10 +81,13 @@ class _FlutterDemoState extends State<FlutterDemo> {
 
   @override
   Widget build(BuildContext context) {
+    DrawerSecondsAppsWidget getDrawer = DrawerSecondsAppsWidget();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Reading and Writing Files'),
       ),
+      drawer: getDrawer.getDrawer(context),
       body: Center(
         child: Text(
           'Button tapped $_counter time${_counter == 1 ? '' : 's'}.',

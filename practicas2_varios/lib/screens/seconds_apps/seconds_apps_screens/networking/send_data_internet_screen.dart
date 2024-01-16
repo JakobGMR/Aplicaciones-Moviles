@@ -103,7 +103,8 @@ class _SendDataInternetScreenState extends State<SendDataInternetScreen> {
       future: _futureAlbum,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return Text(snapshot.data!.title);
+          return Text('Id: ${snapshot.data!.id} \n'
+                      'Title: ${snapshot.data!.title}');
         } else if (snapshot.hasError) {
           return Text('${snapshot.error}');
         }

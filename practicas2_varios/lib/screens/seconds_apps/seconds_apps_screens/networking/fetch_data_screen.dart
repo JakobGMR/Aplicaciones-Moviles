@@ -78,7 +78,11 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
           future: futureAlbum,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return Text(snapshot.data!.title);
+              return Text(
+                'Id: ${snapshot.data!.id} \n'
+                'User Id: ${snapshot.data!.userId} \n'
+                'Título: ${snapshot.data!.title}' 
+              );
             } else if (snapshot.hasError) {
               return Text('${snapshot.error}');
             }

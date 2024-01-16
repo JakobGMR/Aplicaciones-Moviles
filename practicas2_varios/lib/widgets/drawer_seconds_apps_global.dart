@@ -11,22 +11,24 @@ class DrawerSecondsAppsWidget {
     'Act5: Return data from a screen',
     'Act6: Send data to a new screen'
   ];
-  // final List<String> formsTitles = [
-  //   'Act6: Form with Validation',
-  //   'Act7: Style in TextField',
-  //   'Act8: Focus textFields',
-  //   'Act9: Handle changes textFields',
-  //   'Act10: Value textFields',
-  // ];
-  // final List<String> listsTitles = [
-  //   'Act11: Grid List',
-  //   'Act12: Horizontal list',
-  //   'Act13: List with different types of items',
-  //   'Act14: List with spaced items',
-  //   'Act15: Floating Appbar',
-  //   'Act16: Use lists',
-  //   'Act17: Long lists',
-  // ];
+  final List<String> networkingTitles = [
+    'Act7: Fetch data from the internet',
+    'Act8: Make authenticated requests',
+    'Act9: Send data to the internet',
+    'Act10: Update data over the internet',
+    'Act11: Delete data on the internet',
+    'Act12: Communicate with WebSockets',
+    'Act13: Parse JSON in the background'
+  ];
+  final List<String>  persistenceTitles = [
+    'Act11: Grid List',
+    'Act12: Horizontal list',
+    'Act13: List with different types of items',
+    'Act14: List with spaced items',
+    'Act15: Floating Appbar',
+    'Act16: Use lists',
+    'Act17: Long lists',
+  ];
 
   getDrawer(final BuildContext context) {
     final appState = context.watch<MainProvider>();
@@ -37,18 +39,37 @@ class DrawerSecondsAppsWidget {
 
       onDestinationSelected: (value) {
         appState.changeIndex(value);
-        
       },
 
       children: [
+        const Text('Navigation', style: TextStyle(fontSize: 20, color: Colors.cyan), textAlign: TextAlign.center),
+
+        const Divider(color: Colors.amber),
+
         ...navigationTitles.map((e) => NavigationDrawerDestination(
           icon: const Icon(Icons.navigation_outlined), 
           label: Flexible(child: Text(e)),)
-        )
+        ),
 
+        const Text('Networking', style: TextStyle(fontSize: 20, color: Colors.cyan), textAlign: TextAlign.center),
 
+        const Divider(color: Colors.amber),
+
+        ...networkingTitles.map((e) => NavigationDrawerDestination(
+          icon: const Icon(Icons.network_check_outlined), 
+          label: Flexible(child: Text(e)),)
+        ),
+
+        const Text('Persistence', style: TextStyle(fontSize: 20, color: Colors.cyan), textAlign: TextAlign.center),
+
+        const Divider(color: Colors.amber),
+
+        ...persistenceTitles.map((e) => NavigationDrawerDestination(
+          icon: const Icon(Icons.data_object_rounded), 
+          label: Flexible(child: Text(e)),)
+        ),
       ],
-      );
+    );
     // return Drawer(
     //   backgroundColor: Colors.black26,
     //   child: ListView(

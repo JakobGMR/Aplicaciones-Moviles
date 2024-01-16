@@ -57,7 +57,7 @@ class Album {
           id: id,
           title: title,
         ),
-      _ => throw const FormatException('Failed to load album.'),
+      _ => const Album(id: 0, title: 'Deleted')
     };
   }
 }
@@ -86,6 +86,7 @@ class _DeleteDataInternetScreenState extends State<DeleteDataInternetScreen> {
       appBar: AppBar(
         title: const Text('Delete Data Example'),
       ),
+      drawer: getDrawer.getDrawer(context),
       body: Center(
         child: FutureBuilder<Album>(
           future: _futureAlbum,
