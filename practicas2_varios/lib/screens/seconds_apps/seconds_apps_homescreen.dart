@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practicas2_varios/providers/main_provider.dart';
 import 'package:practicas2_varios/screens/seconds_apps/seconds_apps_screens/home.dart';
-import 'package:practicas2_varios/screens/seconds_apps/seconds_apps_screens/networking/communicate_websockets_screen.dart';
-import 'package:practicas2_varios/screens/seconds_apps/seconds_apps_screens/networking/delete_data_internet_screen.dart';
-import 'package:practicas2_varios/screens/seconds_apps/seconds_apps_screens/networking/fetch_data_screen.dart';
-import 'package:practicas2_varios/screens/seconds_apps/seconds_apps_screens/networking/make_authenticated_requests_screen.dart';
-import 'package:practicas2_varios/screens/seconds_apps/seconds_apps_screens/networking/send_data_internet_screen.dart';
-import 'package:practicas2_varios/screens/seconds_apps/seconds_apps_screens/networking/update_data_internet_screen.dart';
 import 'package:provider/provider.dart';
 
 class SecondsAppsHomescreen extends StatefulWidget {
@@ -79,31 +73,22 @@ class _SecondsAppsHomescreenState extends State<SecondsAppsHomescreen> {
         page = const CommunicateWebsocketsScreen();
         break;
       
-      // case 12:
-      //   page = TypesofItemsScreen(items: List<ListItem>.generate(
-      //     1000,
-      //     (i) => i % 6 == 0
-      //         ? HeadingItem('Heading $i')
-      //         : MessageItem('Sender $i', 'Message body $i'),
-      //     )
-      //   );
-      //   break;
+      case 12:
+        page = const ParseJsonBackgroundScreen();
+        break;
 
-      // case 13:
-      //   page = const ListSpacedItemsScreen();
-      //   break;
+      case 13:
+        page = const SQLiteScreen();
+        break;
 
-      // case 14:
-      //   page = const FloatingAppbarScreen();
-      //   break;
+      case 14:
+        page = ReadWriteFilesScreen();
+        break;
 
-      // case 15:
-      //   page = const UseListScreen();
-      //   break;
+      case 15:
+        page = const StoreKeyValueScreen();
+        break;
 
-      // case 16:
-      //   page = LongListsScreen(items: List<String>.generate(10000, (i) => 'Item $i'),);
-      //   break;
       default:
         throw UnimplementedError('no widget for ${appState.selectedIndex}');
     }

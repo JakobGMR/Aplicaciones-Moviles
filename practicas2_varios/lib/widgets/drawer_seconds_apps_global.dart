@@ -21,13 +21,9 @@ class DrawerSecondsAppsWidget {
     'Act13: Parse JSON in the background'
   ];
   final List<String>  persistenceTitles = [
-    'Act11: Grid List',
-    'Act12: Horizontal list',
-    'Act13: List with different types of items',
-    'Act14: List with spaced items',
-    'Act15: Floating Appbar',
-    'Act16: Use lists',
-    'Act17: Long lists',
+    'Act14: Persist data with SQLite',
+    'Act15: Read and write files',
+    'Act16: Store key-value data on disk',
   ];
 
   getDrawer(final BuildContext context) {
@@ -42,27 +38,29 @@ class DrawerSecondsAppsWidget {
       },
 
       children: [
-        const Text('Navigation', style: TextStyle(fontSize: 20, color: Colors.cyan), textAlign: TextAlign.center),
+        const SizedBox(height: 10,),
 
-        const Divider(color: Colors.amber),
+        const Text('Navigation', style: TextStyle(fontSize: 20, color: Colors.purpleAccent), textAlign: TextAlign.center),
+
+        const Divider(color: Colors.brown),
 
         ...navigationTitles.map((e) => NavigationDrawerDestination(
           icon: const Icon(Icons.navigation_outlined), 
           label: Flexible(child: Text(e)),)
         ),
 
-        const Text('Networking', style: TextStyle(fontSize: 20, color: Colors.cyan), textAlign: TextAlign.center),
+        const Text('Networking', style: TextStyle(fontSize: 20, color: Colors.purpleAccent), textAlign: TextAlign.center),
 
-        const Divider(color: Colors.amber),
+        const Divider(color: Colors.brown),
 
         ...networkingTitles.map((e) => NavigationDrawerDestination(
           icon: const Icon(Icons.network_check_outlined), 
           label: Flexible(child: Text(e)),)
         ),
 
-        const Text('Persistence', style: TextStyle(fontSize: 20, color: Colors.cyan), textAlign: TextAlign.center),
+        const Text('Persistence', style: TextStyle(fontSize: 20, color: Colors.purpleAccent), textAlign: TextAlign.center),
 
-        const Divider(color: Colors.amber),
+        const Divider(color: Colors.brown),
 
         ...persistenceTitles.map((e) => NavigationDrawerDestination(
           icon: const Icon(Icons.data_object_rounded), 

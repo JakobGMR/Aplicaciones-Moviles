@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:practicas2_varios/widgets/drawer_seconds_apps_global.dart';
 
-Future<Album> fetchAlbum() async {
+Future<Album2> fetchAlbum2() async {
   final response = await http.get(
     Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
     // Send authorization headers to the backend.
@@ -17,28 +17,28 @@ Future<Album> fetchAlbum() async {
   
   final responseJson = jsonDecode(response.body) as Map<String, dynamic>;
 
-  return Album.fromJson(responseJson);
+  return Album2.fromJson(responseJson);
 }
 
-class Album {
+class Album2 {
   final int userId;
   final int id;
   final String title;
 
-  const Album({
+  const Album2({
     required this.userId,
     required this.id,
     required this.title,
   });
 
-  factory Album.fromJson(Map<String, dynamic> json) {
+  factory Album2.fromJson(Map<String, dynamic> json) {
     return switch (json) {
       {
         'userId': int userId,
         'id': int id,
         'title': String title,
       } =>
-        Album(
+        Album2(
           userId: userId,
           id: id,
           title: title,
@@ -56,12 +56,12 @@ class MakeAuthenticatedScreen extends StatefulWidget {
 }
 
 class _MakeAuthenticatedScreenState extends State<MakeAuthenticatedScreen> {
-  late Future<Album> futureAlbum;
+  late Future<Album2> futureAlbum;
 
   @override
   void initState() {
     super.initState();
-    futureAlbum = fetchAlbum();
+    futureAlbum = fetchAlbum2();
   }
 
   @override
@@ -74,7 +74,7 @@ class _MakeAuthenticatedScreenState extends State<MakeAuthenticatedScreen> {
       ),
       drawer: getDrawer.getDrawer(context),
       body: Center(
-        child: FutureBuilder<Album>(
+        child: FutureBuilder<Album2>(
           future: futureAlbum,
           builder: (context, snapshot) {
             if (snapshot.hasData) {

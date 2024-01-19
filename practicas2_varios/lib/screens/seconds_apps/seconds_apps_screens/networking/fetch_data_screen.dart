@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:practicas2_varios/widgets/drawer_seconds_apps_global.dart';
 
-Future<Album> fetchAlbum() async {
+Future<Album1> fetchAlbum1() async {
   final response = await http
       .get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
     // then parse the JSON.
-    return Album.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+    return Album1.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
   } else {
     // If the server did not return a 200 OK response,
     // then throw an exception.
@@ -20,25 +20,25 @@ Future<Album> fetchAlbum() async {
   }
 }
 
-class Album {
+class Album1 {
   final int userId;
   final int id;
   final String title;
 
-  const Album({
+  const Album1({
     required this.userId,
     required this.id,
     required this.title,
   });
 
-  factory Album.fromJson(Map<String, dynamic> json) {
+  factory Album1.fromJson(Map<String, dynamic> json) {
     return switch (json) {
       {
         'userId': int userId,
         'id': int id,
         'title': String title,
       } =>
-        Album(
+        Album1(
           userId: userId,
           id: id,
           title: title,
@@ -56,12 +56,12 @@ class FetchDataScreen extends StatefulWidget {
 }
 
 class _FetchDataScreenState extends State<FetchDataScreen> {
-  late Future<Album> futureAlbum;
+  late Future<Album1> futureAlbum;
 
   @override
   void initState() {
     super.initState();
-    futureAlbum = fetchAlbum();
+    futureAlbum = fetchAlbum1();
   }
 
   @override
@@ -74,7 +74,7 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
       ),
       drawer: getDrawer.getDrawer(context),
       body: Center(
-        child: FutureBuilder<Album>(
+        child: FutureBuilder<Album1>(
           future: futureAlbum,
           builder: (context, snapshot) {
             if (snapshot.hasData) {

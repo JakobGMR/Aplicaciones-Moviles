@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:practicas2_varios/widgets/drawer_seconds_apps_global.dart';
 
-Future<Album> createAlbum(String title) async {
+Future<Album3> createAlbum(String title) async {
   final response = await http.post(
     Uri.parse('https://jsonplaceholder.typicode.com/albums'),
     headers: <String, String>{
@@ -19,7 +19,7 @@ Future<Album> createAlbum(String title) async {
   if (response.statusCode == 201) {
     // If the server did return a 201 CREATED response,
     // then parse the JSON.
-    return Album.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+    return Album3.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
   } else {
     // If the server did not return a 201 CREATED response,
     // then throw an exception.
@@ -27,19 +27,19 @@ Future<Album> createAlbum(String title) async {
   }
 }
 
-class Album {
+class Album3 {
   final int id;
   final String title;
 
-  const Album({required this.id, required this.title});
+  const Album3({required this.id, required this.title});
 
-  factory Album.fromJson(Map<String, dynamic> json) {
+  factory Album3.fromJson(Map<String, dynamic> json) {
     return switch (json) {
       {
         'id': int id,
         'title': String title,
       } =>
-        Album(
+        Album3(
           id: id,
           title: title,
         ),
@@ -59,7 +59,7 @@ class SendDataInternetScreen extends StatefulWidget {
 
 class _SendDataInternetScreenState extends State<SendDataInternetScreen> {
   final TextEditingController _controller = TextEditingController();
-  Future<Album>? _futureAlbum;
+  Future<Album3>? _futureAlbum;
 
   @override
   Widget build(BuildContext context) {
@@ -98,8 +98,8 @@ class _SendDataInternetScreenState extends State<SendDataInternetScreen> {
     );
   }
 
-  FutureBuilder<Album> buildFutureBuilder() {
-    return FutureBuilder<Album>(
+  FutureBuilder<Album3> buildFutureBuilder() {
+    return FutureBuilder<Album3>(
       future: _futureAlbum,
       builder: (context, snapshot) {
         if (snapshot.hasData) {

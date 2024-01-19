@@ -5,15 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:practicas2_varios/widgets/drawer_seconds_apps_global.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
-      title: 'Reading and Writing Files',
-      home: FlutterDemo(storage: CounterStorage()),
-    ),
-  );
-}
-
 class CounterStorage {
   Future<String> get _localPath async {
     final directory = await getApplicationDocumentsDirectory();
@@ -48,16 +39,16 @@ class CounterStorage {
   }
 }
 
-class FlutterDemo extends StatefulWidget {
-  const FlutterDemo({super.key, required this.storage});
+class ReadWriteFilesScreen extends StatefulWidget {
+  ReadWriteFilesScreen({super.key});
 
-  final CounterStorage storage;
+  final CounterStorage storage = CounterStorage();
 
   @override
-  State<FlutterDemo> createState() => _FlutterDemoState();
+  State<ReadWriteFilesScreen> createState() => _ReadWriteFilesScreenState();
 }
 
-class _FlutterDemoState extends State<FlutterDemo> {
+class _ReadWriteFilesScreenState extends State<ReadWriteFilesScreen> {
   int _counter = 0;
 
   @override

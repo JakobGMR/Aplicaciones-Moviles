@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:practicas2_varios/widgets/drawer_seconds_apps_global.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+class StoreKeyValueScreen extends StatefulWidget {
+  const StoreKeyValueScreen({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<StoreKeyValueScreen> createState() => _StoreKeyValueScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _StoreKeyValueScreenState extends State<StoreKeyValueScreen> {
   int _counter = 0;
 
   @override
@@ -45,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
     
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('Store Key-Value Data on Disk'),
       ),
       drawer: getDrawer.getDrawer(context),
       body: Center(

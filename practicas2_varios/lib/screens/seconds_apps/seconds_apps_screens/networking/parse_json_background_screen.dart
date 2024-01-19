@@ -48,26 +48,8 @@ class Photo {
   }
 }
 
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    const appTitle = 'Isolate Demo';
-
-    return const MaterialApp(
-      title: appTitle,
-      home: MyHomePage(title: appTitle),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+class ParseJsonBackgroundScreen extends StatelessWidget {
+  const ParseJsonBackgroundScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +57,7 @@ class MyHomePage extends StatelessWidget {
     
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: const Text('Parse JSON in the Background'),
       ),
       drawer: getDrawer.getDrawer(context),
       body: FutureBuilder<List<Photo>>(
