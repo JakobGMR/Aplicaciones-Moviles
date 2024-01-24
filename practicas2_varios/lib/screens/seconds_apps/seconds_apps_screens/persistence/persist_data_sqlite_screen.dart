@@ -1,205 +1,329 @@
-import 'dart:async';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-// ignore: unnecessary_import
-import 'package:flutter/widgets.dart';
 import 'package:path/path.dart';
-import 'package:practicas2_varios/widgets/drawer_seconds_apps_global.dart';
 import 'package:sqflite/sqflite.dart';
 
 class SQLiteScreen extends StatefulWidget {
-  const SQLiteScreen({super.key});
+  const SQLiteScreen({required Key key, required this.title}) : super(key: key);
+
+  final String title;
 
   @override
-  State<SQLiteScreen> createState() => _SQLiteScreenState();
+  // ignore: library_private_types_in_public_api
+  _SQLiteScreenState createState() => _SQLiteScreenState();
 }
 
 class _SQLiteScreenState extends State<SQLiteScreen> {
-  void main() async {
-    // Avoid errors caused by flutter upgrade.
-    // Importing 'package:flutter/widgets.dart' is required.
-    WidgetsFlutterBinding.ensureInitialized();
-    // Open the database and store the reference.
-    final database = openDatabase(
-      // Set the path to the database. Note: Using the `join` function from the
-      // `path` package is best practice to ensure the path is correctly
-      // constructed for each platform.
-      join(await getDatabasesPath(), 'doggie_database.db'),
-      // When the database is first created, create a table to store dogs.
-      onCreate: (db, version) {
-        // Run the CREATE TABLE statement on the database.
-        return db.execute(
-          'CREATE TABLE dogs(id INTEGER PRIMARY KEY, name TEXT, age INTEGER)',
-        );
-      },
-      // Set the version. This executes the onCreate function and provides a
-      // path to perform database upgrades and downgrades.
-      version: 1,
-    );
-
-    // Define a function that inserts dogs into the database
-    Future<void> insertDog(Dog dog) async {
-      // Get a reference to the database.
-      final db = await database;
-
-      // Insert the Dog into the correct table. You might also specify the
-      // `conflictAlgorithm` to use in case the same dog is inserted twice.
-      //
-      // In this case, replace any previous data.
-      await db.insert(
-        'dogs',
-        dog.toMap(),
-        conflictAlgorithm: ConflictAlgorithm.replace,
-      );
-    }
-
-    // A method that retrieves all the dogs from the dogs table.
-    Future<List<Dog>> dogs() async {
-      // Get a reference to the database.
-      final db = await database;
-
-      // Query the table for all The Dogs.
-      final List<Map<String, dynamic>> maps = await db.query('dogs');
-
-      // Convert the List<Map<String, dynamic> into a List<Dog>.
-      return List.generate(maps.length, (i) {
-        return Dog(
-          id: maps[i]['id'] as int,
-          name: maps[i]['name'] as String,
-          age: maps[i]['age'] as int,
-        );
-      });
-    }
-
-    Future<void> updateDog(Dog dog) async {
-      // Get a reference to the database.
-      final db = await database;
-
-      // Update the given Dog.
-      await db.update(
-        'dogs',
-        dog.toMap(),
-        // Ensure that the Dog has a matching id.
-        where: 'id = ?',
-        // Pass the Dog's id as a whereArg to prevent SQL injection.
-        whereArgs: [dog.id],
-      );
-    }
-
-    Future<void> deleteDog(int id) async {
-      // Get a reference to the database.
-      final db = await database;
-
-      // Remove the Dog from the database.
-      await db.delete(
-        'dogs',
-        // Use a `where` clause to delete a specific dog.
-        where: 'id = ?',
-        // Pass the Dog's id as a whereArg to prevent SQL injection.
-        whereArgs: [id],
-      );
-    }
-
-    // Create a Dog and add it to the dogs table
-    var fido = const Dog(
-      id: 0,
-      name: 'Fido',
-      age: 35,
-    );
-
-    await insertDog(fido);
-
-    // Now, use the method above to retrieve all the dogs.
-    print(await dogs()); // Prints a list that include Fido.
-
-    // Update Fido's age and save it to the database.
-    fido = Dog(
-      id: fido.id,
-      name: fido.name,
-      age: fido.age + 7,
-    );
-    await updateDog(fido);
-
-    // Print the updated results.
-    print(await dogs()); // Prints Fido with age 42.
-
-    // Delete Fido from the database.
-    await deleteDog(fido.id);
-
-    // Print the list of dogs (empty).
-    print(await dogs());
-  }
+  List<Dog> _dogs = [];
+  int id = 0;
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _ageController = TextEditingController();
+  final TextEditingController _idController = TextEditingController();
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    main();
-    
-    textAnimationDog();
+  void dispose() {
+    _nameController.dispose();
+    _ageController.dispose();
+    _idController.dispose();
+    super.dispose();
   }
 
-  String textDog = 'id: 0 \n'
-                   'name: Fido \n'
-                   'age: 35';
+  void _insertDog() async {
 
-  void textAnimationDog() {
-    Timer(const Duration(seconds: 1), () { 
-      setState(() {
-        textDog = 'id: 0 \n'
-                  'name: Fido \n'
-                  'age: 42';
-      });
-    });
+    int? age = int.tryParse(_ageController.text);
+    if(age == null)  return;
 
-    Timer(const Duration(seconds: 3), () { 
-      setState(() {
-        textDog = 'No Data';
-      });
-    }); 
+    var fido = Dog(
+      name: _nameController.text,
+      age: int.parse(_ageController.text),
+    );
+
+    if (kDebugMode) {
+      print({fido});
+    }
+
+    await insertDog(fido);
+    _updateDogList();
+
+    _nameController.clear();
+    _ageController.clear();
+    _idController.clear();
+  }
+
+  void _updateDog(int id) async {
+    int? age = int.tryParse(_ageController.text);
+    if(age == null)  return;
+
+    var dog = await getById(id);
+
+    var fido = Dog(
+      id: dog.id,
+      name: _nameController.text,
+      age: int.parse(_ageController.text),
+    );
+
+    await updateDog(fido);
+
+    _updateDogList();
+    _nameController.clear();
+    _ageController.clear();
+    _idController.clear();
+  }
+
+  void _deleteDog(int id) async {
+    await deleteDog(id);
+    _updateDogList();
+    _nameController.clear();
+    _ageController.clear();
+    _idController.clear();
+  }
+
+  void _updateDogList() async {
+    _dogs = await dogs();
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    DrawerSecondsAppsWidget getDrawer = DrawerSecondsAppsWidget();
+    final formKey = GlobalKey<FormState>();
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Store Key-Value Data on Disk'),
+        title: Text(widget.title),
+        centerTitle: true,
+        backgroundColor: Colors.blue,
       ),
-      drawer: getDrawer.getDrawer(context),
       body: Center(
-        child: Text(textDog, style: Theme.of(context).textTheme.displaySmall,),
-      )
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 35.0),
+              child: Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 40),
+
+                    const Text('Nombre del perro:'),
+                    
+                    TextFormField(
+                      controller: _nameController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'No dejes este campo vacío';
+                        }
+                        return null;
+                      },
+                    ),
+
+                    const SizedBox(height: 20),
+                    
+                    const Text('Edad del perro:'),
+
+                    TextFormField(
+                      controller: _ageController,
+                      keyboardType: TextInputType.number,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Ingresa la edad del perro';
+                        }
+                        return null;
+                      },
+                    ),
+
+                    const SizedBox(height: 20,),
+
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            if(formKey.currentState!.validate()) {
+                              _insertDog();
+                            }
+                          }, 
+                          child: const Text('Añadir perro')
+                        ),
+
+                        ElevatedButton(
+                          onPressed: () {
+                            if(formKey.currentState!.validate()) {
+                              if(id == 0) return;
+                              _updateDog(id);
+                            }
+                          },
+                          child: const Text('Actualizar perro')
+                        )
+                      ],
+                    )
+                    
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 40.0),
+            const Text('List of Dogs'),
+            Expanded(
+              child: FutureBuilder<List<Dog>>(
+                future: dogs(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  } else {
+                    _dogs = snapshot.data!;
+                    return ListView.builder(
+                      itemCount: _dogs.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: Text(
+                              'Name: ${_dogs[index].name}'),
+                          subtitle: Text('Age: ${_dogs[index].age}'),
+                          leading: IconButton(
+                            icon: const Icon(Icons.delete),
+                            onPressed: () {
+                              _deleteDog(_dogs[index].id!);
+                            },
+                          ),
+                          onTap: () {
+                            _nameController.text = _dogs[index].name;
+                            _ageController.text = _dogs[index].age.toString();
+                            id = _dogs[index].id!;
+                          },
+                        );
+                      },
+                    );
+                  }
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
 
 class Dog {
-  final int id;
+  final int? id;
   final String name;
   final int age;
 
-  const Dog({
-    required this.id,
+  Dog({
+    this.id,
     required this.name,
     required this.age,
   });
 
-  // Convert a Dog into a Map. The keys must correspond to the names of the
-  // columns in the database.
   Map<String, dynamic> toMap() {
-    return {
-      'id': id,
+    var map = {
       'name': name,
       'age': age,
     };
+
+    if (id != null) {
+      map['id'] = id as Object;
+    }
+
+    return map;
   }
 
-  // Implement toString to make it easier to see information about
-  // each dog when using the print statement.
   @override
   String toString() {
     return 'Dog{id: $id, name: $name, age: $age}';
   }
+}
+
+Database? _database;
+
+Future<Database> initializeDatabase() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  return openDatabase(
+    join(await getDatabasesPath(), 'doggie_database.db'),
+    onCreate: (db, version) {
+      return db.execute(
+        'CREATE TABLE dogs(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, age INTEGER)',
+      );
+    },
+    version: 1,
+  );
+}
+
+Future<Database> get database async {
+  if (_database != null) return _database!;
+
+  _database = await initializeDatabase();
+  return _database!;
+}
+
+Future<Dog> getById(int id) async {
+  final Database db = await database;
+  final List<Map<String, dynamic>> maps = await db.rawQuery('SELECT * FROM dogs WHERE id = $id');
+  
+  if (maps.isNotEmpty) {
+    return Dog(
+      id: maps[0]['id'] as int,
+      name: maps[0]['name'] as String,
+      age: maps[0]['age'] as int,
+    );
+  }
+
+  throw Exception('Id $id not found');
+}
+
+Future<void> insertDog(Dog dog) async {
+  final db = await database;
+  await db.insert(
+    'dogs',
+    dog.toMap(),
+    conflictAlgorithm: ConflictAlgorithm.replace,
+  );
+}
+
+Future<List<Dog>> dogs() async {
+  // Get a reference to the database.
+  final db = await database;
+
+  // Query the table for all The Dogs.
+  final List<Map<String, dynamic>> maps = await db.query('dogs');
+
+  // Convert the List<Map<String, dynamic> into a List<Dog>.
+  return List.generate(maps.length, (i) {
+    return Dog(
+      id: maps[i]['id'] as int,
+      name: maps[i]['name'] as String,
+      age: maps[i]['age'] as int,
+    );
+  });
+}
+
+Future<void> updateDog(Dog dog) async {
+  // Get a reference to the database.
+  final db = await database;
+
+  // Update the given Dog.
+  await db.update(
+    'dogs',
+    dog.toMap(),
+    // Ensure that the Dog has a matching id.
+    where: 'id = ?',
+    // Pass the Dog's id as a whereArg to prevent SQL injection.
+    whereArgs: [dog.id],
+  );
+}
+
+Future<void> deleteDog(int id) async {
+  // Get a reference to the database.
+  final db = await database;
+
+  // Remove the Dog from the database.
+  await db.delete(
+    'dogs',
+    // Use a `where` clause to delete a specific dog.
+    where: 'id = ?',
+    // Pass the Dog's id as a whereArg to prevent SQL injection.
+    whereArgs: [id],
+  );
 }

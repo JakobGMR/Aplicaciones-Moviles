@@ -78,7 +78,7 @@ class _SecondsAppsHomescreenState extends State<SecondsAppsHomescreen> {
         break;
 
       case 13:
-        page = const SQLiteScreen();
+        page = SQLiteScreen(title:'SQLite ', key: UniqueKey());
         break;
 
       case 14:
