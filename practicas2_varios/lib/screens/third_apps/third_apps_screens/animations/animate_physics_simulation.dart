@@ -15,9 +15,9 @@ class AnimatePhysicsSimulationScreen extends StatelessWidget {
       drawer: getDrawer.getDrawer(context),
       body: DraggableCard(
         child: SizedBox(
-          width: 200,
-          height: 200,
-          child: Image.network('https://c3.klipartz.com/pngpicture/931/160/sticker-png-kirby.png', fit: BoxFit.contain),
+          width: 300,
+          height: 300,
+          child: Image.network('https://images.wikidexcdn.net/mwuploads/esssbwiki/thumb/f/f2/latest/20160202180900/Kirby_SSB.png/200px-Kirby_SSB.png', fit: BoxFit.contain),
         ),
       ),
     );

@@ -58,11 +58,10 @@ class _CreatePhotoFilterScreenState extends State<CreatePhotoFilterScreen> {
       valueListenable: _filterColor,
       builder: (context, color, child) {
         return Image.network(
-          'https://docs.flutter.dev/cookbook/img-files'
-          '/effects/instagram-buttons/millennial-dude.jpg',
+          'https://sm.ign.com/t/ign_es/screenshot/default/metal-gear-solid-5-the-phantom-pain-reviewjpg-ef04_141465_8pdh.1200.jpg',
           color: color.withOpacity(0.5),
           colorBlendMode: BlendMode.color,
-          fit: BoxFit.cover,
+          fit: BoxFit.scaleDown,
         );
       },
     );

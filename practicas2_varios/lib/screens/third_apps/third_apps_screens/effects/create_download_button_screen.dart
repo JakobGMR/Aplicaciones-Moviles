@@ -102,7 +102,7 @@ class DemoAppIcon extends StatelessWidget {
             ),
             child: Center(
               child: Icon(
-                Icons.ac_unit,
+                Icons.tiktok_rounded,
                 color: Colors.white,
                 size: 40,
               ),
