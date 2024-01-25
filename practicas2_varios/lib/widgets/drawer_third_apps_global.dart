@@ -11,7 +11,7 @@ class DrawerThirdAppsWidget {
   ];
   final List<String> effectsTitles = [
     'Act5: Create a download button',
-    'Act6: Create a nested navigation flow'
+    'Act6: Create a nested navigation flow',
     'Act7: Create a photo filter carousel',
     'Act8: Create a scrolling parallax effect',
     'Act9: Create a shimmer loading effect',
