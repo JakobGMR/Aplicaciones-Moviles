@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:practicas2_varios/widgets/drawer_seconds_apps_global.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 class CounterStorage {
   Future<String> get _localPath async {
@@ -72,7 +72,7 @@ class _ReadWriteFilesScreenState extends State<ReadWriteFilesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    DrawerSecondsAppsWidget getDrawer = DrawerSecondsAppsWidget();
+    DrawerAppsWidget getDrawer = DrawerAppsWidget(2);
 
     return Scaffold(
       appBar: AppBar(

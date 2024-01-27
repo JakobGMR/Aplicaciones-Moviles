@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/widgets/drawer_third_apps_global.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 class CreateDownloadButtonScreen extends StatefulWidget {
   const CreateDownloadButtonScreen({super.key});
@@ -33,7 +33,7 @@ class _CreateDownloadButtonScreenState extends State<CreateDownloadButtonScreen>
 
   @override
   Widget build(BuildContext context) {
-    DrawerThirdAppsWidget getDrawer = DrawerThirdAppsWidget();
+    DrawerAppsWidget getDrawer = DrawerAppsWidget(3);
     
     return Scaffold(
       appBar: AppBar(title: const Text('Apps')),

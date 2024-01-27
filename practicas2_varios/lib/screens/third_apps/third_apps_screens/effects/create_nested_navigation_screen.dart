@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/widgets/drawer_third_apps_global.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 const routeHome = '/';
 const routeSettings = '/settings';
@@ -371,7 +371,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DrawerThirdAppsWidget getDrawer = DrawerThirdAppsWidget();
+    DrawerAppsWidget getDrawer = DrawerAppsWidget(3);
     
     return Scaffold(
       appBar: _buildAppBar(context),

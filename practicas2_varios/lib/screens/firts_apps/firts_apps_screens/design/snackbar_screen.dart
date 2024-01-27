@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/widgets/drawer_firsts_apps_global_.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 class SnackbarScreen extends StatelessWidget {
   SnackbarScreen({super.key});
 
-  final DrawerFirstsAppsWidget getDrawer = DrawerFirstsAppsWidget();
+  final DrawerAppsWidget getDrawer = DrawerAppsWidget(1);
 
   @override
   Widget build(BuildContext context) {

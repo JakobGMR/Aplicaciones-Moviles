@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/widgets/drawer_third_apps_global.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 class CreateStaggeredMenuScreen extends StatefulWidget {
   const CreateStaggeredMenuScreen({super.key});
@@ -49,7 +49,7 @@ class _CreateStaggeredMenuScreenState extends State<CreateStaggeredMenuScreen> w
 
   @override
   Widget build(BuildContext context) {
-    DrawerThirdAppsWidget getDrawer = DrawerThirdAppsWidget();
+    DrawerAppsWidget getDrawer = DrawerAppsWidget(3);
     
     return Scaffold(
       backgroundColor: Colors.white,

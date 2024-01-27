@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/widgets/drawer_seconds_apps_global.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 class NavigateNewScreen extends StatelessWidget {
   const NavigateNewScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    DrawerSecondsAppsWidget getDrawer = DrawerSecondsAppsWidget();
+    DrawerAppsWidget getDrawer = DrawerAppsWidget(2);
     
     return Scaffold(
       appBar: AppBar(

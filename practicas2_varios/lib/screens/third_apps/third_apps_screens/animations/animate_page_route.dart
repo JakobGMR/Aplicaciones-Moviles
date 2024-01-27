@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/widgets/drawer_third_apps_global.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 class AnimatePageRouteScreen extends StatelessWidget {
   const AnimatePageRouteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final DrawerThirdAppsWidget getDrawer = DrawerThirdAppsWidget();
+    final DrawerAppsWidget getDrawer = DrawerAppsWidget(3);
     return Scaffold(
       appBar: AppBar(),
       drawer: getDrawer.getDrawer(context),

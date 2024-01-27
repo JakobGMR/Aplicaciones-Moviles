@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:practicas2_varios/widgets/drawer_firsts_apps_global_.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 class ThemeColorsScreen extends StatelessWidget {
   const ThemeColorsScreen({super.key});
@@ -56,7 +56,7 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DrawerFirstsAppsWidget getDrawer = DrawerFirstsAppsWidget();
+    DrawerAppsWidget getDrawer = DrawerAppsWidget(1);
 
     return Scaffold(
       appBar: AppBar(

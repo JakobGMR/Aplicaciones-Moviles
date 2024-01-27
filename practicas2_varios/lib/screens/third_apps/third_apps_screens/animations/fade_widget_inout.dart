@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/widgets/drawer_third_apps_global.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 class FadeWidgetInOutScreen extends StatefulWidget {
   const FadeWidgetInOutScreen({super.key});
@@ -11,7 +11,7 @@ class FadeWidgetInOutScreen extends StatefulWidget {
 class _FadeWidgetInOutScreenState extends State<FadeWidgetInOutScreen> {
   // Whether the green box should be visible
   bool _visible = true;
-  DrawerThirdAppsWidget getDrawer = DrawerThirdAppsWidget();
+  DrawerAppsWidget getDrawer = DrawerAppsWidget(3);
 
   @override
   Widget build(BuildContext context) {

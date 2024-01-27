@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/widgets/drawer_seconds_apps_global.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StoreKeyValueScreen extends StatefulWidget {
@@ -39,7 +39,7 @@ class _StoreKeyValueScreenState extends State<StoreKeyValueScreen> {
 
   @override
   Widget build(BuildContext context) {
-    DrawerSecondsAppsWidget getDrawer = DrawerSecondsAppsWidget();
+    DrawerAppsWidget getDrawer = DrawerAppsWidget(2);
     
     return Scaffold(
       appBar: AppBar(

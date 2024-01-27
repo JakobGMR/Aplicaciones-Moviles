@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/widgets/drawer_firsts_apps_global_.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 class UseListScreen extends StatelessWidget {
   const UseListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final DrawerFirstsAppsWidget getDrawer = DrawerFirstsAppsWidget();
+    final DrawerAppsWidget getDrawer = DrawerAppsWidget(1);
     
     return Scaffold(
         appBar: AppBar(

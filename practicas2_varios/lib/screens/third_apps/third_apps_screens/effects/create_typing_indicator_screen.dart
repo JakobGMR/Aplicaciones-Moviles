@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/widgets/drawer_third_apps_global.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 const _backgroundColor = Color(0xFF333333);
 
@@ -18,7 +18,7 @@ class _CreateTypingIndicatorScreenState extends State<CreateTypingIndicatorScree
 
   @override
   Widget build(BuildContext context) {
-    DrawerThirdAppsWidget getDrawer = DrawerThirdAppsWidget();
+    DrawerAppsWidget getDrawer = DrawerAppsWidget(3);
 
     return Scaffold(
       backgroundColor: _backgroundColor,

@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/widgets/drawer_firsts_apps_global_.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 class FormValidationScreen extends StatefulWidget {
   const FormValidationScreen({super.key});
@@ -12,7 +12,7 @@ class FormValidationScreen extends StatefulWidget {
 class _FormValidationScreenState extends State<FormValidationScreen> {
   @override
   Widget build(BuildContext context) {
-    final DrawerFirstsAppsWidget getDrawer = DrawerFirstsAppsWidget();
+    final DrawerAppsWidget getDrawer = DrawerAppsWidget(1);
     final _formKey = GlobalKey<FormState>();
     
     return SafeArea(

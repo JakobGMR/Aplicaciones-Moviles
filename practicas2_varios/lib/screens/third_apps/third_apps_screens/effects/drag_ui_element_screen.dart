@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/widgets/drawer_third_apps_global.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 const List<Item> _items = [
   Item(
@@ -64,7 +64,7 @@ class _DragUIElementScreenState extends State<DragUIElementScreen> with TickerPr
 
   @override
   Widget build(BuildContext context) {
-    DrawerThirdAppsWidget getDrawer = DrawerThirdAppsWidget();
+    DrawerAppsWidget getDrawer = DrawerAppsWidget(3);
 
     return Scaffold(
       backgroundColor: const Color(0xFFF7F7F7),

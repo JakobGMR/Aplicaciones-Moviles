@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 import 'package:sqflite/sqflite.dart';
 
 class SQLiteScreen extends StatefulWidget {
@@ -86,6 +87,7 @@ class _SQLiteScreenState extends State<SQLiteScreen> {
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
+    DrawerAppsWidget getDrawer = DrawerAppsWidget(2);
 
     return Scaffold(
       appBar: AppBar(
@@ -93,6 +95,7 @@ class _SQLiteScreenState extends State<SQLiteScreen> {
         centerTitle: true,
         backgroundColor: Colors.blue,
       ),
+      drawer: getDrawer.getDrawer(context),
       body: Center(
         child: Column(
           children: [

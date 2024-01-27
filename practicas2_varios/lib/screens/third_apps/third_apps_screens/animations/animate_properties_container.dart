@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/widgets/drawer_third_apps_global.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 class AnimatePropertiesContainerScreen extends StatefulWidget {
   const AnimatePropertiesContainerScreen({super.key});
@@ -14,7 +14,7 @@ class _AnimatePropertiesContainerScreenState extends State<AnimatePropertiesCont
   double _height = 50;
   Color _color = Colors.green;
   BorderRadiusGeometry _borderRadius = BorderRadius.circular(8);
-  DrawerThirdAppsWidget getDrawer = DrawerThirdAppsWidget();
+  DrawerAppsWidget getDrawer = DrawerAppsWidget(3);
 
   @override
   Widget build(BuildContext context) {

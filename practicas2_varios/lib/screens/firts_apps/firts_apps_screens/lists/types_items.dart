@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/widgets/drawer_firsts_apps_global_.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 class TypesofItemsScreen extends StatelessWidget {
   final List<ListItem> items;
@@ -8,7 +8,7 @@ class TypesofItemsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DrawerFirstsAppsWidget getDrawer = DrawerFirstsAppsWidget();
+    DrawerAppsWidget getDrawer = DrawerAppsWidget(1);
 
     return Scaffold(
         appBar: AppBar(

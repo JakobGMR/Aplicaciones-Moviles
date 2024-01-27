@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/widgets/drawer_third_apps_global.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 const _shimmerGradient = LinearGradient(
   colors: [
@@ -35,7 +35,7 @@ class _CreateShimmerLoadingScreenState extends State<CreateShimmerLoadingScreen>
 
   @override
   Widget build(BuildContext context) {
-    DrawerThirdAppsWidget getDrawer = DrawerThirdAppsWidget();
+    DrawerAppsWidget getDrawer = DrawerAppsWidget(3);
     
     return Scaffold(
       appBar: AppBar(title: const Text('Create a Shimmer Loading Effect')),

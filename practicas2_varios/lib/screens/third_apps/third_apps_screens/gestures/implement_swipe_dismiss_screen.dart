@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/widgets/drawer_third_apps_global.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 class ImplementSwipeDismissScreen extends StatefulWidget {
   const ImplementSwipeDismissScreen({super.key});
@@ -10,7 +10,7 @@ class ImplementSwipeDismissScreen extends StatefulWidget {
 
 class _ImplementSwipeDismissScreenState extends State<ImplementSwipeDismissScreen> {
   final items = List<String>.generate(20, (i) => 'Item ${i + 1}');
-  DrawerThirdAppsWidget getDrawer = DrawerThirdAppsWidget();
+  DrawerAppsWidget getDrawer = DrawerAppsWidget(3);
 
   @override
   Widget build(BuildContext context) {

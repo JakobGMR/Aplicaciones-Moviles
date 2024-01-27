@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/widgets/drawer_seconds_apps_global.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 class CommunicateWebsocketsScreen extends StatefulWidget {
@@ -19,7 +19,7 @@ class _CommunicateWebsocketsScreenState extends State<CommunicateWebsocketsScree
 
   @override
   Widget build(BuildContext context) {
-    DrawerSecondsAppsWidget getDrawer = DrawerSecondsAppsWidget();
+    DrawerAppsWidget getDrawer = DrawerAppsWidget(2);
 
     return Scaffold(
       appBar: AppBar(

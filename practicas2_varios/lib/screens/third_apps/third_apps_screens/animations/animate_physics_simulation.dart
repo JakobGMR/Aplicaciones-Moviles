@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
-import 'package:practicas2_varios/widgets/drawer_third_apps_global.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 class AnimatePhysicsSimulationScreen extends StatelessWidget {
   const AnimatePhysicsSimulationScreen
@@ -8,7 +8,7 @@ class AnimatePhysicsSimulationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DrawerThirdAppsWidget getDrawer = DrawerThirdAppsWidget();
+    DrawerAppsWidget getDrawer = DrawerAppsWidget(3);
 
     return Scaffold(
       appBar: AppBar(),

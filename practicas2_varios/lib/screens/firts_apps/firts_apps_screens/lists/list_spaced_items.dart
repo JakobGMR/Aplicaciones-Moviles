@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/widgets/drawer_firsts_apps_global_.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 class ListSpacedItemsScreen extends StatelessWidget {
   const ListSpacedItemsScreen({super.key});
@@ -7,7 +7,7 @@ class ListSpacedItemsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const items = 20;
-    final DrawerFirstsAppsWidget getDrawer = DrawerFirstsAppsWidget();
+    final DrawerAppsWidget getDrawer = DrawerAppsWidget(1);
 
     return Scaffold(
       appBar: AppBar(title: const Text('List with Spaced Items')),

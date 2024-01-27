@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/widgets/drawer_seconds_apps_global.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 class ArgumentsNamedRouteScreen extends StatelessWidget {
   const ArgumentsNamedRouteScreen({super.key});
@@ -55,7 +55,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  DrawerSecondsAppsWidget getDrawer = DrawerSecondsAppsWidget();
+  DrawerAppsWidget getDrawer = DrawerAppsWidget(2);
   
     return Scaffold(
       appBar: AppBar(

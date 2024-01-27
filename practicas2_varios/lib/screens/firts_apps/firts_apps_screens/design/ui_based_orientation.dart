@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practicas2_varios/widgets/drawer_firsts_apps_global_.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 class UIBasedOrientationScreen extends StatefulWidget {
   const UIBasedOrientationScreen({super.key});
@@ -13,7 +13,7 @@ class _UIBasedOrientationScreenState extends State<UIBasedOrientationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final DrawerFirstsAppsWidget getDrawer = DrawerFirstsAppsWidget();
+    final DrawerAppsWidget getDrawer = DrawerAppsWidget(1);
 
     return Scaffold(
       appBar: AppBar(title: const Text('GridView')),

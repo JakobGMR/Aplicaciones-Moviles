@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:practicas2_varios/widgets/drawer_seconds_apps_global.dart';
+import 'package:practicas2_varios/widgets/drawer_apps_global_.dart';
 
 Future<Album> fetchAlbum() async {
   final response = await http.get(
@@ -80,7 +80,7 @@ class _DeleteDataInternetScreenState extends State<DeleteDataInternetScreen> {
 
   @override
   Widget build(BuildContext context) {
-    DrawerSecondsAppsWidget getDrawer = DrawerSecondsAppsWidget();
+    DrawerAppsWidget getDrawer = DrawerAppsWidget(2);
 
     return Scaffold(
       appBar: AppBar(
